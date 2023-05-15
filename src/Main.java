@@ -7,14 +7,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        int a;
-        int c;
+        String a;
+        String c;
 
         Numbers number1 = new Numbers();
         Scanner scanner = new Scanner(System.in);
-        String string = scanner.nextLine();
+        String string1 = scanner.nextLine();
+        String string = string1.replaceAll(" ", "");
+
+
+
 
         String[] g = string.split("[-+*/]");
+
         if (g.length > 2) {
             try {
                 throw new IOException();
@@ -30,28 +35,28 @@ public class Main {
             string.indexOf("*");
             try {
 
-                a = Integer.parseInt(g[0]);
+                a = g[0];
                 //b = String.valueOf(string.charAt(1));
-                c = Integer.parseInt(g[1]);
+                c = g[1];
 
 
                 if (string.indexOf("+") == -1 && string.indexOf("-") == -1 && string.indexOf("*") == -1) {
 
-                    number1.a1 = a;
+                    number1.a1 = Integer.parseInt(a);
                     number1.a2 = "/";
-                    number1.a3 = c;
+                    number1.a3 = Integer.parseInt(c);
                 } else if ((string.indexOf("+") == -1 && string.indexOf("-") == -1 && string.indexOf("/") == -1)) {
-                    number1.a1 = a;
+                    number1.a1 = Integer.parseInt(a);
                     number1.a2 = "*";
-                    number1.a3 = c;
+                    number1.a3 = Integer.parseInt(c);
                 } else if ((string.indexOf("/") == -1 && string.indexOf("-") == -1 && string.indexOf("/") == -1)) {
-                    number1.a1 = a;
+                    number1.a1 = Integer.parseInt(a);
                     number1.a2 = "+";
-                    number1.a3 = c;
+                    number1.a3 = Integer.parseInt(c);
                 } else if ((string.indexOf("/") == -1 && string.indexOf("+") == -1 && string.indexOf("/") == -1)) {
-                    number1.a1 = a;
+                    number1.a1 = Integer.parseInt(a);
                     number1.a2 = "-";
-                    number1.a3 = c;
+                    number1.a3 = Integer.parseInt(c);
                 }
             } catch (NumberFormatException e) {
                 throw new RuntimeException("Вы ввели что-то не то");
@@ -69,11 +74,11 @@ public class Main {
         static int a3;
 
         public static String calc(String input) throws IOException {
-            if (a1>10 && a3>10 || a1>10 || a3>10){
+            if (a1>10 && a3>10 || a1>10 || a3>10 || a1==0 && a3==0 || a1==0 || a3==0 ){
                 try {
                     throw new IOException();
                 } catch (IOException e) {
-                    throw new IOException("Числа не могут быть больше 10");
+                    throw new IOException("Числа не могут быть больше 10 и меньше 1");
                 }
 
             }else {
